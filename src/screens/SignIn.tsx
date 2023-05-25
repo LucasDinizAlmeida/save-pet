@@ -1,9 +1,10 @@
 import { ScrollView, VStack, Image, Center, Text, Heading, HStack, Icon } from "native-base";
 import { FontAwesome5 } from '@expo/vector-icons';
 import BackgroundImage from '@assets/background.png'
-import LogoSvg from '@assets/logo.svg'
+import dogsImage from '@assets/dogs.png'
 import { Button } from "@components/Button";
 import { useState } from "react";
+import { Platform } from "react-native";
 
 export function SignIn() {
 
@@ -29,9 +30,16 @@ export function SignIn() {
           <Text color='gray.100' fontSize='md'>
             Encontre o pet ideal para você
           </Text>
+
+          <Image
+            source={dogsImage}
+            alt="dogs"
+            resizeMode="contain"
+            mt={20}
+          />
         </Center>
 
-        <Center flex={1}>
+        <Center>
           <Heading color='gray.100' fontSize='xl' fontFamily='heading' my={8}>
             Entre com uma conta Google
           </Heading>
@@ -40,16 +48,21 @@ export function SignIn() {
             title="Acessar"
             isLoading={isLoading}
           />
-          <Heading color='gray.100' fontSize='xl' fontFamily='heading' my={8}>
-            Entre com uma conta Apple
-          </Heading>
+          {
+            Platform.OS === 'ios' &&
+            <>
+              <Heading color='gray.100' fontSize='xl' fontFamily='heading' my={8}>
+                Entre com uma conta Apple
+              </Heading>
 
-          <Button
-            title="Acessar"
-            loginType="apple1"
-            variant="outline"
-            isLoading={isLoading}
-          />
+              <Button
+                title="Acessar"
+                loginType="apple1"
+                variant="outline"
+                isLoading={isLoading}
+              />
+            </>
+          }
         </Center>
       </VStack>
     </ScrollView>
