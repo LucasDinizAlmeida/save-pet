@@ -7,6 +7,7 @@ import { Center, ScrollView, VStack, Text, Heading } from "native-base";
 import { ProfileHeader } from "@components/ProfileHeader";
 import { UserPhoto } from "@components/UserPhoto";
 import { Button } from "@components/Button";
+import { ConfigNotifications } from "@components/ConfigNotifications";
 
 const PHOTO_SIZE = 33
 
@@ -26,7 +27,10 @@ export function Profile() {
             size={33}
           />
 
-          <TouchableOpacity >
+          <ConfigNotifications title="Receber notificação por estado:" />
+          <ConfigNotifications title="Receber notificação por cidade:" />
+
+          {/* <TouchableOpacity >
             <Text color='green.500' fontWeight='bold' fontSize='md' mt={2} mb={8}>
               Alterar foto
             </Text>
@@ -42,7 +46,7 @@ export function Profile() {
           <Button
             title="Atualizar"
             mt={4}
-          />
+          /> */}
         </Center>
       </ScrollView>
     </VStack>

@@ -28,7 +28,7 @@ export function PetCard({ data: { name, description }, ...rest }: Props) {
         />
 
         <VStack flex={1}>
-          <Heading fontSize='lg' color='white' fontFamily='heading'>
+          <Heading fontSize='lg' color='yellow.500' fontFamily='heading'>
             Chiquinha
           </Heading>
 

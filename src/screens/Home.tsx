@@ -5,6 +5,8 @@ import { PetDTO } from "@dtos/PetDTO";
 import { VStack, Text, HStack, Heading, FlatList, Center } from "native-base";
 import { useState } from "react";
 import { Filter } from "@components/Filter";
+import { useNavigation, useRoute } from "@react-navigation/native";
+import { AppNavigatorRoutesProps } from "@routes/app.routes";
 
 export function Home() {
 
@@ -100,7 +102,17 @@ export function Home() {
     },
   ])
 
+  const navigation = useNavigation<AppNavigatorRoutesProps>()
+
+  const router = useRoute()
+  const params = router.params
+
+  function handleOpenPetDetails() {
+    navigation.navigate('petDetails', { exerciseId: '1' })
+  }
+
   return (
+
     <VStack flex={1}>
       <HomeHeader />
 
@@ -111,7 +123,7 @@ export function Home() {
           <Loading /> :
           <>
 
-            <VStack px={8} mt={10}>
+            <VStack px={8} bg='red.500'>
               <HStack justifyContent='space-between' mb={5}>
                 <Heading color='white' fontSize='lg' fontFamily='heading'>
                   Pets
@@ -128,7 +140,7 @@ export function Home() {
               keyExtractor={item => item.id}
               renderItem={({ item }) => (
                 <PetCard
-                  onPress={() => { }}
+                  onPress={handleOpenPetDetails}
                   data={item}
                 />
               )}

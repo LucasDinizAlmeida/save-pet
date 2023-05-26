@@ -1,10 +1,9 @@
 import { PetCard } from "@components/PetCard";
 import { Loading } from "@components/Loading";
 import { PetDTO } from "@dtos/PetDTO";
-import { VStack, Text, HStack, Heading, FlatList, Center, Icon } from "native-base";
+import { VStack, FlatList } from "native-base";
 import { useState } from "react";
-import { AntDesign } from '@expo/vector-icons';
-import { TouchableOpacity } from "react-native";
+import { MyPetsHeader } from "@components/MyPetsHeader";
 
 export function MyPets() {
 
@@ -102,40 +101,14 @@ export function MyPets() {
 
   return (
     <VStack flex={1}>
-
-      <HStack px={8} mt={75} alignItems='center' justifyContent='space-between'>
-        <Heading color='white' fontFamily='heading' fontSize='2xl'>
-          Meus Pets:
-        </Heading>
-
-        <TouchableOpacity>
-          <Icon
-            as={AntDesign}
-            name="plus"
-            size={35}
-            color='white'
-
-          />
-        </TouchableOpacity>
-      </HStack>
+      <MyPetsHeader
+        petsCount={pets.length}
+      />
 
       {
         isLoading ?
           <Loading /> :
           <>
-
-            <VStack px={8} mt={10}>
-              <HStack justifyContent='space-between' mb={5}>
-                <Heading color='white' fontSize='lg' fontFamily='heading'>
-                  Pets
-                </Heading>
-
-                <Text color='white' fontSize='md'>
-                  {pets.length}
-                </Text>
-              </HStack>
-            </VStack>
-
             <FlatList
               data={pets}
               keyExtractor={item => item.id}

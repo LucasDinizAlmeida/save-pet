@@ -9,7 +9,7 @@ export function Routes() {
 
 
   const theme = DefaultTheme
-  theme.colors.background = colors.red[500]
+  theme.colors.background = colors.white
 
 
 
