@@ -16,7 +16,7 @@ export function Routes() {
   return (
     <Box flex={1} bg='red.500'>
       <NavigationContainer theme={theme}>
-        <AppRoutes />
+        <AuthRoutes />
       </NavigationContainer>
     </Box>
   )
